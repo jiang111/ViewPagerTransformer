@@ -2,7 +2,7 @@ apply plugin: 'com.android.library'
 apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'com.jfrog.bintray'
 // This is the library version used when deploying the artifact
-version = "1.0.0"
+version = "1.0.1"
 android {
     compileSdkVersion 23
     buildToolsVersion "23.0.3"
@@ -10,8 +10,8 @@ android {
     defaultConfig {
         minSdkVersion 15
         targetSdkVersion 23
-        versionCode 1
-        versionName "1.0"
+        versionCode 2
+        versionName "1.1"
     }
     buildTypes {
         release {
@@ -30,7 +30,7 @@ dependencies {
 
 def siteUrl = 'https://github.com/jiang111/ViewPagerTransformer'      // 项目的主页
 def gitUrl = 'https://github.com/jiang111/ViewPagerTransformer.git'   // Git仓库的url
-group = "com.jiang.android.okhttptask"                                        // Maven Group ID for the artifact，一般填你唯一的包名
+group = "com.jiang.android.viewpagertransformer"                                        // Maven Group ID for the artifact，一般填你唯一的包名
 install {
     repositories.mavenInstaller {
         // This generates POM.xml with proper parameters
