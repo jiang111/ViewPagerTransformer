@@ -5,7 +5,9 @@
 
 ####  为ViewPager增加了一些PageTransformer,实现了通过viewpager的滑动来对fragment内的元素进行动画操作。 
 
-#### 用法:
+#### demo 下载：https://raw.githubusercontent.com/jiang111/ViewPagerTransformer/master/apk/app-debug.apk
+
+#### 集成:
 
 gradle:
 ```
@@ -23,6 +25,13 @@ Maven
 </dependency>
 
 ```
+
+#### 用法:
+
+>1. 使用TransformViewPager 代替ViewPager
+>2. viewpager的PageAdapter使用TransformerAdapter.
+>3. fragment 继承 TransformerFragment,在transform方法中编写动画需求.
+>4. ViewPager需要使用setOffscreenPageLimit方法.
 
 ![](https://raw.githubusercontent.com/jiang111/ViewPagerTransformer/master/art/7.gif)
 
