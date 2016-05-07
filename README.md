@@ -38,7 +38,3 @@ Maven
 
 ![](https://raw.githubusercontent.com/jiang111/ViewPagerTransformer/master/art/6.gif)
 
-
-
-
-参考:https://github.com/rajyvan/Android-EasyTransformPager
