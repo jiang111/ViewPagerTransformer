@@ -1,5 +1,6 @@
 package com.jiang.android.viewpagertransformer;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -9,12 +10,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.jiang.android.transformer.RotateTopTransformer;
-import com.jiang.android.transformer.RotateTransformer;
-import com.jiang.android.transformer.ScalePositionTransformer;
-import com.jiang.android.transformer.ScaleTransformer;
-import com.jiang.android.transformer.StandardTransformer;
-import com.jiang.android.transformer.TestTransformer;
+import com.jiang.android.transformer.transformer.RotateCenterTransformer;
+import com.jiang.android.transformer.transformer.RotateTopTransformer;
+import com.jiang.android.transformer.transformer.RotateTransformer;
+import com.jiang.android.transformer.transformer.ScalePositionTransformer;
+import com.jiang.android.transformer.transformer.ScaleTransformer;
+import com.jiang.android.transformer.transformer.StandardTransformer;
+import com.jiang.android.transformer.transformer.TestTransformer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
     private ViewPager mViewPager;
 
     private List<VpSimpleFragment> mLists = new ArrayList<>();
-    private String[] effects = new String[]{"Standard", "Scale", "ScalePosition", "Rotate", "RotateTop", "test"};
+    private String[] effects = new String[]{"Standard", "Scale", "ScalePosition", "Rotate", "RotateTop", "RotateCenter", "test", "TransformActivity"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,9 +75,16 @@ public class MainActivity extends AppCompatActivity {
                 setTitle("ScalePosition");
                 mViewPager.setPageTransformer(true, new ScalePositionTransformer());
                 break;
+            case "RotateCenter":
+                setTitle("RotateCenter");
+                mViewPager.setPageTransformer(true, new RotateCenterTransformer());
+                break;
             case "test":
                 setTitle("test");
                 mViewPager.setPageTransformer(true, new TestTransformer());
+                break;
+            case "TransformActivity":
+                startActivity(new Intent(this, TransformerActivity.class));
                 break;
             default:
                 break;

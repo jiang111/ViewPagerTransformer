@@ -26,7 +26,7 @@
  * #                                                   #
  */
 
-package com.jiang.android.transformer;
+package com.jiang.android.transformer.transformer;
 
 import android.support.v4.view.ViewPager;
 import android.view.View;
@@ -34,9 +34,30 @@ import android.view.View;
 /**
  * Created by jiang on 16/5/7.
  */
-public class StandardTransformer implements ViewPager.PageTransformer {
+public class RotateCenterTransformer implements ViewPager.PageTransformer {
+
+    public static float ROT_MAX = 120.0f;
+
     @Override
     public void transformPage(View page, float position) {
-        page.setAlpha(1);
+        int width = page.getWidth();
+        int height = page.getHeight();
+        if (position < -1) {
+            page.setAlpha(0);
+        } else if (position <= 0) {  //left
+            page.setPivotX(0);
+            page.setPivotY(height/2);
+            page.setRotation(Math.abs(position) * ROT_MAX);
+            page.setAlpha(1 + position);
+        } else if (position <= 1) {  //right
+            page.setPivotX(width);
+            page.setPivotY(height/2);
+            page.setRotation(-1 * position * ROT_MAX);
+            page.setAlpha(1 - position);
+
+        } else {
+            page.setAlpha(0);
+        }
+
     }
 }

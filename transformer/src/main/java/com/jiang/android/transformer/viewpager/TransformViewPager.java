@@ -26,53 +26,46 @@
  * #                                                   #
  */
 
-package com.jiang.android.transformer;
+package com.jiang.android.transformer.viewpager;
 
+import android.content.Context;
 import android.support.v4.view.ViewPager;
+import android.util.AttributeSet;
 import android.view.View;
+
+import com.jiang.android.transformer.adapter.TransformerAdapter;
+import com.jiang.android.transformer.fragment.TransformerFragment;
 
 /**
  * Created by jiang on 16/5/7.
  */
-public class ScalePositionTransformer implements ViewPager.PageTransformer {
-
-
-    int mX = -1;
-    int mY = -1;
-
-    public ScalePositionTransformer() {
+public class TransformViewPager extends ViewPager {
+    public TransformViewPager(Context context) {
+        this(context, null);
     }
 
-    public ScalePositionTransformer(int x, int y) {
-        mX = x;
-        mY = y;
+    public TransformViewPager(Context context, AttributeSet attrs) {
+        super(context, attrs);
     }
 
     @Override
-    public void transformPage(View page, float position) {
-        if (mX < 0) {
-            mX = page.getWidth();
-        }
-        if (mY < 0) {
-            mY = page.getHeight();
-        }
-        if (position < -1) {
-            page.setAlpha(0);
-        } else if (position <= 0) {
-            page.setPivotX(mX / 2);
-            page.setPivotY(0);
-            page.setScaleX(1 + position);
-            page.setScaleY(1 + position);
-            page.setAlpha(1 + position);
+    protected void onPageScrolled(int position, float offset, int offsetPixels) {
+        super.onPageScrolled(position, offset, offsetPixels);
+        final int childCount = getChildCount();
 
-        } else if (position <= 1) {
-            page.setPivotX(mX / 2);
-            page.setPivotY(mY);
-            page.setScaleX(1 - position);
-            page.setScaleY(1 - position);
-            page.setAlpha(1 - position);
-        } else {
-            page.setAlpha(0);
+        for (int i = 0; i < childCount; i++) {
+            final View child = getChildAt(i);
+
+            final LayoutParams lp = (LayoutParams) child.getLayoutParams();
+            if (lp.isDecor) continue;
+
+            TransformerAdapter adapter = (TransformerAdapter) getAdapter();
+            if (adapter != null) {
+                final TransformerFragment fragment = adapter.getFragment(position, i);
+                if (fragment != null) {
+                    fragment.transform(child, i == 0 ? offset : 1 - offset);
+                }
+            }
         }
     }
 }

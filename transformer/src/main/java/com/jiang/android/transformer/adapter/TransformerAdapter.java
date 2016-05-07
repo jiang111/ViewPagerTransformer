@@ -26,33 +26,24 @@
  * #                                                   #
  */
 
-package com.jiang.android.transformer;
+package com.jiang.android.transformer.adapter;
 
-import android.support.v4.view.ViewPager;
-import android.view.View;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+
+import com.jiang.android.transformer.fragment.TransformerFragment;
 
 /**
  * Created by jiang on 16/5/7.
  */
-public class TestTransformer implements ViewPager.PageTransformer {
-    @Override
-    public void transformPage(View page, float position) {
-        if (position < -1) {
-            page.setAlpha(0);
-        } else if (position <= 0) {
+public abstract class TransformerAdapter extends FragmentPagerAdapter {
 
-            page.setTranslationX(1 + position);
-            page.setTranslationY(1 + position);
 
-            page.setAlpha(1 + position);
-
-        } else if (position <= 1) {
-            page.setTranslationX(1 - position);
-            page.setTranslationY(1 - position);
-            page.setAlpha(1 - position);
-        } else {
-            page.setAlpha(0);
-        }
-
+    public TransformerAdapter(FragmentManager fm) {
+        super(fm);
     }
+
+
+    public abstract TransformerFragment getFragment(int position, int childPosition);
+
 }
