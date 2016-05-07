@@ -44,6 +44,6 @@ public abstract class TransformerAdapter extends FragmentPagerAdapter {
     }
 
 
-    public abstract TransformerFragment getFragment(int position, int childPosition);
+    public abstract TransformerFragment getFragment(int position);
 
 }

@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.jiang.android.transformer.adapter.TransformerAdapter;
 import com.jiang.android.transformer.fragment.TransformerFragment;
+import com.jiang.android.transformer.transformer.ScalePositionTransformer;
 import com.jiang.android.transformer.viewpager.TransformViewPager;
 
 import java.util.ArrayList;
@@ -24,6 +25,7 @@ public class TransformerActivity extends AppCompatActivity {
         initDatas();
         mViewPager.setOffscreenPageLimit(mLists.size());
         mViewPager.setAdapter(new PagerAdapter(getSupportFragmentManager()));
+        mViewPager.setPageTransformer(true,new ScalePositionTransformer());
     }
 
     private void initDatas() {
@@ -40,12 +42,13 @@ public class TransformerActivity extends AppCompatActivity {
         }
 
         @Override
-        public TransformerFragment getFragment(int position, int childPosition) {
-            if (mLists.size() > position + childPosition) {
-                return mLists.get(position + childPosition);
+        public TransformerFragment getFragment(int position) {
+            if (mLists.size() > position) {
+                return mLists.get(position);
             }
             return null;
         }
+
 
         @Override
         public TransformerFragment getItem(int position) {
