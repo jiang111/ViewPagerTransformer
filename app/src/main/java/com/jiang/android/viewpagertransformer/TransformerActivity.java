@@ -6,8 +6,11 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.jiang.android.transformer.adapter.TransformerAdapter;
 import com.jiang.android.transformer.fragment.TransformerFragment;
-import com.jiang.android.transformer.transformer.ScalePositionTransformer;
 import com.jiang.android.transformer.viewpager.TransformViewPager;
+import com.jiang.android.viewpagertransformer.fragment.Test1TransformerFragment;
+import com.jiang.android.viewpagertransformer.fragment.Test2TransformerFragment;
+import com.jiang.android.viewpagertransformer.fragment.Test3TransformerFragment;
+import com.jiang.android.viewpagertransformer.fragment.Test4TransformerFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,13 +28,13 @@ public class TransformerActivity extends AppCompatActivity {
         initDatas();
         mViewPager.setOffscreenPageLimit(mLists.size());
         mViewPager.setAdapter(new PagerAdapter(getSupportFragmentManager()));
-        mViewPager.setPageTransformer(true,new ScalePositionTransformer());
     }
 
     private void initDatas() {
-        for (int i = 0; i < 5; i++) {
-            mLists.add(TestTransformerFragment.newInstance(i + "", i));
-        }
+        mLists.add(Test1TransformerFragment.newInstance());
+        mLists.add(Test2TransformerFragment.newInstance());
+        mLists.add(Test3TransformerFragment.newInstance());
+        mLists.add(Test4TransformerFragment.newInstance());
     }
 
     public class PagerAdapter extends TransformerAdapter {

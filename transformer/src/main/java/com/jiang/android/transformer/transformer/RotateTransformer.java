@@ -29,6 +29,7 @@
 package com.jiang.android.transformer.transformer;
 
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.View;
 
 /**
@@ -39,11 +40,14 @@ public class RotateTransformer implements ViewPager.PageTransformer {
     public static float ROT_MAX = 30.0f; //可根据需求修改
 
 
+    private static final String TAG = "RotateTransformer";
     @Override
     public void transformPage(View page, float position) {
         if (position < -1) {
             page.setAlpha(0);
         } else if (position <= 0) {  //left
+
+            Log.i(TAG, "transformPage: "+position);
             page.setRotation(position * ROT_MAX);
             page.setAlpha(1 + position);
         } else if (position <= 1) {  //right

@@ -1,5 +1,5 @@
 /**
- * created by jiang, 16/5/7
+ * created by jiang, 16/2/28
  * Copyright (c) 2016, jyuesong@gmail.com All Rights Reserved.
  * *                #                                                   #
  * #                       _oo0oo_                     #
@@ -26,22 +26,25 @@
  * #                                                   #
  */
 
-package com.jiang.android.viewpagertransformer;
+package com.jiang.android.viewpagertransformer.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.jiang.android.transformer.fragment.TransformerFragment;
+import com.jiang.android.viewpagertransformer.R;
 
 /**
- * Created by jiang on 16/5/7.
+ * Created by jiang on 16/2/28.
  */
-public class TestTransformerFragment extends TransformerFragment {
+
+public class VpSimpleFragment extends Fragment {
+
     public static final String BUNDLE_TITLE = "title";
     private String mTitle = "DefaultValue";
     private RelativeLayout mBG;
@@ -89,20 +92,14 @@ public class TestTransformerFragment extends TransformerFragment {
 
     }
 
-    public static TestTransformerFragment newInstance(String title, int position) {
+    public static VpSimpleFragment newInstance(String title, int position) {
         Bundle bundle = new Bundle();
         bundle.putString(BUNDLE_TITLE, title);
         bundle.putInt("position", position);
-        TestTransformerFragment fragment = new TestTransformerFragment();
+        VpSimpleFragment fragment = new VpSimpleFragment();
 
         fragment.setArguments(bundle);
 
         return fragment;
-    }
-    @Override
-    public void transform(View view, float offset) {
-        mTitle1.setRotation(360 * (1 - offset));
-        mTitle1.setAlpha(1 - offset);
-
     }
 }

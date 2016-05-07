@@ -35,6 +35,7 @@ import android.view.View;
  * Created by jiang on 16/5/7.
  */
 public class StandardTransformer implements ViewPager.PageTransformer {
+
     @Override
     public void transformPage(View page, float position) {
         page.setAlpha(1);

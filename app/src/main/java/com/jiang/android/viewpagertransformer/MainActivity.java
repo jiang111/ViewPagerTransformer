@@ -17,6 +17,7 @@ import com.jiang.android.transformer.transformer.ScalePositionTransformer;
 import com.jiang.android.transformer.transformer.ScaleTransformer;
 import com.jiang.android.transformer.transformer.StandardTransformer;
 import com.jiang.android.transformer.transformer.TestTransformer;
+import com.jiang.android.viewpagertransformer.fragment.VpSimpleFragment;
 
 import java.util.ArrayList;
 import java.util.List;
