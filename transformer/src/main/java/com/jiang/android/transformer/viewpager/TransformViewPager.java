@@ -53,25 +53,20 @@ public class TransformViewPager extends ViewPager {
         super.onPageScrolled(position, offset, offsetPixels);
         final int childCount = getChildCount();
 
-        final int scrollX = getScrollX();
-
         for (int i = 0; i < childCount; i++) {
             final View child = getChildAt(i);
 
             final LayoutParams lp = (LayoutParams) child.getLayoutParams();
             if (lp.isDecor) continue;
-            final float transformPos = (float) (child.getLeft() - scrollX) / getClientWidth();
 
             TransformerAdapter adapter = (TransformerAdapter) getAdapter();
             if (adapter != null) {
-                final TransformerFragment fragment = adapter.getFragment(position+i);
+                final TransformerFragment fragment = adapter.getFragment(position + i);
                 if (fragment != null) {
                     fragment.transform(child, i == 0 ? offset : 1 - offset);
                 }
             }
         }
     }
-    private int getClientWidth() {
-        return getMeasuredWidth() - getPaddingLeft() - getPaddingRight();
-    }
+
 }
