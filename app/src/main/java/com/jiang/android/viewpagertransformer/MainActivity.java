@@ -16,7 +16,6 @@ import com.jiang.android.transformer.transformer.RotateTransformer;
 import com.jiang.android.transformer.transformer.ScalePositionTransformer;
 import com.jiang.android.transformer.transformer.ScaleTransformer;
 import com.jiang.android.transformer.transformer.StandardTransformer;
-import com.jiang.android.transformer.transformer.TestTransformer;
 import com.jiang.android.viewpagertransformer.fragment.VpSimpleFragment;
 
 import java.util.ArrayList;
@@ -26,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
     private ViewPager mViewPager;
 
     private List<VpSimpleFragment> mLists = new ArrayList<>();
-    private String[] effects = new String[]{"Standard", "Scale", "ScalePosition", "Rotate", "RotateTop", "RotateCenter", "test", "TransformActivity"};
+    private String[] effects = new String[]{"Standard", "Scale", "ScalePosition", "Rotate", "RotateTop", "RotateCenter", "TransformActivity"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,10 +79,7 @@ public class MainActivity extends AppCompatActivity {
                 setTitle("RotateCenter");
                 mViewPager.setPageTransformer(true, new RotateCenterTransformer());
                 break;
-            case "test":
-                setTitle("test");
-                mViewPager.setPageTransformer(true, new TestTransformer());
-                break;
+
             case "TransformActivity":
                 startActivity(new Intent(this, TransformerActivity.class));
                 break;
