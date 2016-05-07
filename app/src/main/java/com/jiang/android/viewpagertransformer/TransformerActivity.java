@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.jiang.android.transformer.adapter.TransformerAdapter;
 import com.jiang.android.transformer.fragment.TransformerFragment;
+import com.jiang.android.transformer.transformer.RotateTransformer;
 import com.jiang.android.transformer.viewpager.TransformViewPager;
 import com.jiang.android.viewpagertransformer.fragment.Test1TransformerFragment;
 import com.jiang.android.viewpagertransformer.fragment.Test2TransformerFragment;
@@ -28,6 +29,7 @@ public class TransformerActivity extends AppCompatActivity {
         initDatas();
         mViewPager.setOffscreenPageLimit(mLists.size());
         mViewPager.setAdapter(new PagerAdapter(getSupportFragmentManager()));
+        mViewPager.setPageTransformer(true,new RotateTransformer());
     }
 
     private void initDatas() {
