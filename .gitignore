@@ -1,7 +1,6 @@
 ### Android template
 # Built application files
-*.apk
-*.ap_
+
 
 # Files for the Dalvik VM
 *.dex
@@ -39,7 +38,6 @@ captures/
 # Keystore files
 *.jks
 
-*.iml
 .gradle
 /local.properties
 /.idea/workspace.xml
