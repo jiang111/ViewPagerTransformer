@@ -35,7 +35,6 @@ Maven
 
 ![](https://raw.githubusercontent.com/jiang111/ViewPagerTransformer/master/art/7.gif)
 
-![](https://raw.githubusercontent.com/jiang111/ViewPagerTransformer/master/art/5.gif)
 
 ![](https://raw.githubusercontent.com/jiang111/ViewPagerTransformer/master/art/6.gif)
 
