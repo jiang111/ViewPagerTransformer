@@ -34,27 +34,43 @@ import android.view.View;
 /**
  * Created by jiang on 16/5/7.
  */
-public class RotateTopTransformer implements ViewPager.PageTransformer {
+public class ScalePositionTransformer implements ViewPager.PageTransformer {
 
-    public static float ROT_MAX = 30.0f; //可根据需求修改
+
+    int mX = -1;
+    int mY = -1;
+
+    public ScalePositionTransformer() {
+    }
+
+    public ScalePositionTransformer(int x, int y) {
+        mX = x;
+        mY = y;
+    }
 
     @Override
     public void transformPage(View page, float position) {
-        int width = page.getWidth();
-        int top = page.getTop();
+        if (mX < 0) {
+            mX = page.getWidth();
+        }
+        if (mY < 0) {
+            mY = page.getHeight();
+        }
         if (position < -1) {
             page.setAlpha(0);
-        } else if (position <= 0) {  //left
-            page.setPivotX(width / 2);
-            page.setPivotY(top);
-            page.setRotation(Math.abs(position) * ROT_MAX);
+        } else if (position <= 0) {
+            page.setPivotX(mX / 2);
+            page.setPivotY(0);
+            page.setScaleX(1 + position);
+            page.setScaleY(1 + position);
             page.setAlpha(1 + position);
-        } else if (position <= 1) {  //right
-            page.setPivotX(width / 2);
-            page.setPivotY(top);
-            page.setRotation(-1 * position * ROT_MAX);
-            page.setAlpha(1 - position);
 
+        } else if (position <= 1) {
+            page.setPivotX(mX / 2);
+            page.setPivotY(mY);
+            page.setScaleX(1 - position);
+            page.setScaleY(1 - position);
+            page.setAlpha(1 - position);
         } else {
             page.setAlpha(0);
         }

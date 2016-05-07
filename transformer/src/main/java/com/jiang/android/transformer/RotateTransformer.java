@@ -36,7 +36,8 @@ import android.view.View;
  */
 public class RotateTransformer implements ViewPager.PageTransformer {
 
-    private static final float ROT_MAX = 30.0f;
+    public static float ROT_MAX = 30.0f; //可根据需求修改
+
 
     @Override
     public void transformPage(View page, float position) {

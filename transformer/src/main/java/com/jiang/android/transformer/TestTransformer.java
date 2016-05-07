@@ -34,29 +34,25 @@ import android.view.View;
 /**
  * Created by jiang on 16/5/7.
  */
-public class RotateTopTransformer implements ViewPager.PageTransformer {
-
-    public static float ROT_MAX = 30.0f; //可根据需求修改
-
+public class TestTransformer implements ViewPager.PageTransformer {
     @Override
     public void transformPage(View page, float position) {
-        int width = page.getWidth();
-        int top = page.getTop();
         if (position < -1) {
             page.setAlpha(0);
-        } else if (position <= 0) {  //left
-            page.setPivotX(width / 2);
-            page.setPivotY(top);
-            page.setRotation(Math.abs(position) * ROT_MAX);
-            page.setAlpha(1 + position);
-        } else if (position <= 1) {  //right
-            page.setPivotX(width / 2);
-            page.setPivotY(top);
-            page.setRotation(-1 * position * ROT_MAX);
-            page.setAlpha(1 - position);
+        } else if (position <= 0) {
 
+            page.setTranslationX(1 + position);
+            page.setTranslationY(1 + position);
+
+            page.setAlpha(1 + position);
+
+        } else if (position <= 1) {
+            page.setTranslationX(1 - position);
+            page.setTranslationY(1 - position);
+            page.setAlpha(1 - position);
         } else {
             page.setAlpha(0);
         }
+
     }
 }
