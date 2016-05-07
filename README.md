@@ -3,7 +3,7 @@
 [ ![Download](https://api.bintray.com/packages/yuesong/maven/ViewPagerTransformer/images/download.svg) ](https://bintray.com/yuesong/maven/ViewPagerTransformer/_latestVersion)
 
 
-####  为ViewPager增加了一些PageTransformer,实现了通过viewpager的滑动来对fragment内的元素进行动画操作。 
+####  为ViewPager增加了一些PageTransformer,实现了通过viewpager的滑动来对fragment内的元素进行动画操作,可用于引导页的效果
 
 #### demo 下载：https://raw.githubusercontent.com/jiang111/ViewPagerTransformer/master/apk/app-debug.apk
 
